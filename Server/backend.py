@@ -5,16 +5,16 @@ class Backend(object):
     def __init__(self):
         pass
 
-    def create(self,filename="",value=""):
+    def create_file(self,filename="",value=""):
         path = os.getcwd()
         name = filename
         filename = os.path.join(path, filename)
         f = open(filename, "w+")
         f.write(value)
         f.close()
-        return "[ Nama file: {}, Isi : {} ]".format(name,value)
+        return "{}, {}".format(name,value)
 
-    def update(self,filename="",value=""):
+    def update_file(self,filename="",value=""):
         path = os.getcwd()
         name = filename
         filename = os.path.join(path, filename)
@@ -22,11 +22,11 @@ class Backend(object):
             f = open(filename, "w+")
             f.write(value)
             f.close()
-            return "[ Nama file: {}, Isi : {} ]".format(name,value)
+            return "{},{}".format(name,value)
         else:
             return "file not found!"
 
-    def read(self,filename=""):
+    def read_file(self,filename=""):
         path = os.getcwd()
         filename = os.path.join(path, filename)
         if(os.path.exists(filename)):
@@ -39,16 +39,16 @@ class Backend(object):
             return "file not found!"
 
 
-    def delete(self,filename=""):
+    def delete_file(self,filename=""):
         path = os.getcwd()
         filename = os.path.join(path, filename)
         if(os.path.exists(filename)):
             os.remove(filename)
-            return("successfully deleted")
+            return("deleted")
         else:
             return "file not found!"
 
-    def show(self):
+    def show_file(self):
         files = []
         path = os.getcwd()
         print path
