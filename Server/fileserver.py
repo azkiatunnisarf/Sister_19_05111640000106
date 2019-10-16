@@ -1,4 +1,6 @@
 import os
+import time
+import Pyro4
 
 class FileServer(object):
     def __init__(self):
@@ -54,6 +56,11 @@ class FileServer(object):
             return self.create_return_message('101','OK')
         except:
             return self.create_return_message('500','Error')
+
+    @Pyro4.expose
+    def server_down(self):
+        time.sleep(self.ping_interval() + 1)
+        return self.ok()
 
 
 
